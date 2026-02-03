@@ -1,304 +1,112 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master-coder - Поддержка сайтов на Master</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
-    <!-- Шапка с видеофоном -->
-    <header class="header">
-        <div class="header-video-placeholder"></div>
-        <div class="header-overlay"></div>
+// Ожидание загрузки DOM
+window.addEventListener('DOMContentLoaded', function() {
+    // Мобильное меню
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuItems = document.querySelectorAll('.mobile-menu-item-has-children');
+    
+    // Открытие/закрытие мобильного меню
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('opened');
+            
+            // Анимация кнопки бургера
+            const spans = mobileMenuBtn.querySelectorAll('span');
+            if (mobileMenu.classList.contains('opened')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
         
-        <!-- Навигация -->
-        <nav class="navbar">
-            <div class="container">
-                <div class="navbar-content">
-                    <a href="#" class="logo">Master-coder</a>
-                    
-                    <!-- Десктопное меню -->
-                    <ul class="nav-menu">
-                        <li><a href="#support">Поддержка</a></li>
-                        <li class="menu-item-has-children">
-                            <a href="#admin">Администрирование <span class="arrow">▼</span></a>
-                            <ul class="submenu">
-                                <li><a href="#migration">Миграция</a></li>
-                                <li><a href="#backups">Бэкапы</a></li>
-                                <li><a href="#audit">Аудит безопасности</a></li>
-                                <li><a href="#optimization">Оптимизация скорости</a></li>
-                                <li><a href="#https">Переезд на HTTPS</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#promotion">Продвижение</a></li>
-                        <li><a href="#contact">Контакты</a></li>
-                    </ul>
-                    
-                    <!-- Кнопка мобильного меню -->
-                    <button class="mobile-menu-btn" id="mobileMenuBtn">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Мобильное меню -->
-        <div class="mobile-menu" id="mobileMenu">
-            <div class="mobile-menu-content">
-                <ul class="mobile-nav">
-                    <li><a href="#support">Поддержка</a></li>
-                    <li class="mobile-menu-item-has-children">
-                        <a href="#admin">Администрирование <span class="mobile-arrow">▼</span></a>
-                        <ul class="mobile-submenu">
-                            <li><a href="#migration">Миграция</a></li>
-                            <li><a href="#backups">Бэкапы</a></li>
-                            <li><a href="#audit">Аудит безопасности</a></li>
-                            <li><a href="#optimization">Оптимизация скорости</a></li>
-                            <li><a href="#https">Переезд на HTTPS</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#promotion">Продвижение</a></li>
-                    <li><a href="#contact">Контакты</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Заголовок в шапке -->
-        <div class="container">
-            <div class="header-content">
-                <h1 class="header-title">
-                    Поддержка сайтов<br>на Master
-                </h1>
-                <p class="header-subtitle">
-                    13 лет совершенствуем компетенции в Master поддержке!
-                </p>
-                <p class="header-text">
-                    Разрабатываем и оптимизируем модули, расширяем функциональность сайтов, обновляем дизайн
-                </p>
-                <button class="btn btn-primary" id="scrollToForm">Обсудить задачу</button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Основное содержимое -->
-    <main>
-        <!-- Секция услуг -->
-        <section class="services" id="support">
-            <div class="container">
-                <h2 class="section-title">Поддержка сайтов от Master-coder</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">📝</div>
-                        <h3>Добавление информации на сайт, создание новых разделов</h3>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">⚙️</div>
-                        <h3>Разработка и оптимизация модулей сайта</h3>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">🔗</div>
-                        <h3>Интеграция с CRM, 1С, платежными системами</h3>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">🎨</div>
-                        <h3>Любые доработки функционала и дизайна</h3>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">🛡️</div>
-                        <h3>Аудит и мониторинг безопасности Master сайтов</h3>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">🚀</div>
-                        <h3>Миграция, импорт контента и апгрейд Master</h3>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">⚡</div>
-                        <h3>Оптимизация и ускорение Master-сайтов</h3>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">📈</div>
-                        <h3>Веб-маркетинг, консультации и работы по SEO</h3>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Секция поддержки -->
-        <section class="support-features">
-            <div class="container">
-                <h2 class="section-title">Поддержка от Master-coder</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-number">01</div>
-                        <h3>Постановка задачи по Email</h3>
-                        <p>Удобная и привычная модель постановки задач, при которой задача фиксируется и никогда не теряется.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-number">02</div>
-                        <h3>Система Helpdesk - отчетность, прозрачность</h3>
-                        <p>Возможность посмотреть все заявки в работе и отработанные часы в личном кабинете через браузер.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-number">03</div>
-                        <h3>Расширенная техническая поддержка</h3>
-                        <p>Возможность организации расширенной техподдержки с 6:00 до 22:00 без выходных.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-number">04</div>
-                        <h3>Персональный менеджер проекта</h3>
-                        <p>Ваш менеджер проекта всегда в курсе текущего состояния проекта и в любой момент готов ответить на любые вопросы.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-number">05</div>
-                        <h3>Удобные способы оплаты</h3>
-                        <p>Безналичный расчет по договору или электронные деньги: WebMoney, Яндекс.Деньги, Paypal.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-number">06</div>
-                        <h3>Работаем с SLA и NDA</h3>
-                        <p>Работа в рамках соглашений о конфиденциальности и об уровне качества работ.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-number">07</div>
-                        <h3>Штатные специалисты</h3>
-                        <p>Надежные штатные специалисты, никаких фрилансеров.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-number">08</div>
-                        <h3>Удобные каналы связи</h3>
-                        <p>Консультации по телефону, скайпу, в мессенджерах.</p>
-                    </div>
-                </div>
-                
-                <div class="expertise">
-                    <h3>Экспертиза в Master, опыт 14 лет!</h3>
-                </div>
-            </div>
-        </section>
-
-        <!-- Секция тарифов -->
-        <section class="pricing" id="tariffs">
-            <div class="container">
-                <h2 class="section-title">Тарифы</h2>
-                <div class="pricing-grid">
-                    <div class="price-card">
-                        <h3 class="price-card-title">Стартовый</h3>
-                        <div class="price-card-price">от 6 000 руб.</div>
-                        <ul class="price-card-features">
-                            <li>Консультации и работы по SEO</li>
-                            <li>Услуги дизайнера</li>
-                            <li>Неиспользованные часы переносятся</li>
-                        </ul>
-                        <button class="btn btn-secondary">Выбрать тариф</button>
-                    </div>
-                    <div class="price-card featured">
-                        <h3 class="price-card-title">Бизнес</h3>
-                        <div class="price-card-price">от 30 000 руб.</div>
-                        <ul class="price-card-features">
-                            <li>Консультации и работы по SEO</li>
-                            <li>Услуги дизайнера</li>
-                            <li>Высокое время реакции</li>
-                        </ul>
-                        <button class="btn btn-primary">Выбрать тариф</button>
-                    </div>
-                    <div class="price-card">
-                        <h3 class="price-card-title">VIP</h3>
-                        <div class="price-card-price">от 270 000 руб.</div>
-                        <ul class="price-card-features">
-                            <li>Консультации и работы по SEO</li>
-                            <li>Услуги дизайнера</li>
-                            <li>Максимальное время реакции</li>
-                        </ul>
-                        <button class="btn btn-secondary">Выбрать тариф</button>
-                    </div>
-                </div>
-                <div class="pricing-note">
-                    <p>Вам не подходят наши тарифы? Оставьте заявку и мы предложим вам индивидуальный тариф!</p>
-                    <button class="btn btn-primary" id="individualTariff">Получить индивидуальный тариф</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Секция формы -->
-        <section class="contact-form" id="contact">
-            <div class="container">
-                <h2 class="section-title">Оставить заявку на поддержку сайта</h2>
-                <form id="supportForm" class="form">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Ваше имя" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" id="phone" name="phone" placeholder="Телефон" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" placeholder="Ваш комментарий" rows="4"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="agreement" name="agreement" required>
-                            <span>Соглашаюсь с обработкой персональных данных</span>
-                        </label>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">Отправить заявку</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- Секция FAQ -->
-        <section class="faq" id="faq">
-            <div class="container">
-                <h2 class="section-title">Часто задаваемые вопросы</h2>
-                <div class="faq-grid">
-                    <div class="faq-item">
-                        <h3 class="faq-question">Кто непосредственно занимается поддержкой?</h3>
-                        <p class="faq-answer">Сайты поддерживают штатные сотрудники ООО "Иннитлаб" г. Краснодар, прошедшие специальное обучение и имеющие опыт работы с Master от 4 до 15 лет.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3 class="faq-question">Как организована работа поддержки?</h3>
-                        <p class="faq-answer">Работа организована через систему Helpdesk, где вы можете отслеживать статус всех заявок и отработанное время.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3 class="faq-question">Что происходит когда отработаны все предоплаченные часы за месяц?</h3>
-                        <p class="faq-answer">Когда отработаны все предоплаченные часы, вы можете либо докупить дополнительные часы, либо перенести невыполненные задачи на следующий месяц.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3 class="faq-question">Можно ли пообщаться со специалистом голосом или в мессенджере?</h3>
-                        <p class="faq-answer">Да, вы можете общаться со специалистом по телефону, Skype или в любых удобных для вас мессенджерах.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Футер -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <h3>Master-coder</h3>
-                    <p>Проект ООО «Иннитлаб», Краснодар, Россия.<br>
-                    Master является зарегистрированной торговой маркой Dries Buytaert.</p>
-                </div>
-                <div class="footer-contacts">
-                    <h4>Контакты</h4>
-                    <p>Телефон: <a href="tel:88002222673">8 800 222-26-73</a></p>
-                    <p>Email: <a href="mailto:info@master-coder.ru">info@master-coder.ru</a></p>
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <p>© 2023 Master-coder. Все права защищены.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="./js/main.js"></script>
-    <script src="./js/form.js"></script>
-</body>
-</html>
+        // Закрытие меню при клике на ссылку
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (!this.parentElement.classList.contains('mobile-menu-item-has-children')) {
+                    mobileMenu.classList.remove('opened');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+        });
+    }
+    
+    // Открытие/закрытие подменю в мобильном меню
+    mobileMenuItems.forEach(item => {
+        const link = item.querySelector('a');
+        const arrow = item.querySelector('.mobile-arrow');
+        
+        link.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                item.classList.toggle('active');
+            }
+        });
+    });
+    
+    // Плавная прокрутка для якорных ссылок
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            
+            if (href === '#') return;
+            
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // Кнопки для прокрутки к форме
+    const scrollToFormBtn = document.getElementById('scrollToForm');
+    const individualTariffBtn = document.getElementById('individualTariff');
+    
+    if (scrollToFormBtn) {
+        scrollToFormBtn.addEventListener('click', function() {
+            const formSection = document.getElementById('contact');
+            if (formSection) {
+                window.scrollTo({
+                    top: formSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    }
+    
+    if (individualTariffBtn) {
+        individualTariffBtn.addEventListener('click', function() {
+            const formSection = document.getElementById('contact');
+            if (formSection) {
+                window.scrollTo({
+                    top: formSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    }
+    
+    // Кнопки выбора тарифа
+    const tariffButtons = document.querySelectorAll('.price-card .btn');
+    tariffButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const formSection = document.getElementById('contact');
+            if (formSection) {
+                window.scrollTo({
+                    top: formSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
