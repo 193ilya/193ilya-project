@@ -3,1534 +3,302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Brand - Адаптивная веб-страница</title>
-    <!-- Шрифты -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* ===== CSS VARIABLES - ЦВЕТА ИЗ МАКЕТА ===== */
-        :root {
-            /* Neutral Colors - PERSONAL, FASHION, CUSTOM и т.д. */
-            --neutral-50: #fafafa;
-            --neutral-100: #f5f5f5;
-            --neutral-200: #e5e5e5;
-            --neutral-300: #d4d4d4;
-            --neutral-400: #a3a3a3;
-            --neutral-500: #737373;
-            --neutral-600: #525252;
-            --neutral-700: #404040;
-            --neutral-800: #262626;
-            --neutral-900: #171717;
-            
-            /* Primary Colors - TEMPORARY, PRODUCTS, PHYSICAL и т.д. */
-            --primary-50: #eff6ff;
-            --primary-100: #dbeafe;
-            --primary-200: #bfdbfe;
-            --primary-300: #93c5fd;
-            --primary-400: #60a5fa;
-            --primary-500: #3b82f6;
-            --primary-600: #2563eb;
-            --primary-700: #1d4ed8;
-            --primary-800: #1e40af;
-            --primary-900: #1e3a8a;
-            
-            /* Color Shade - DIGITAL, PLUSING, CHALLENGES и т.д. */
-            --shade-50: #f8fafc;
-            --shade-100: #f1f5f9;
-            --shade-200: #e2e8f0;
-            --shade-300: #cbd5e1;
-            --shade-400: #94a3b8;
-            --shade-500: #64748b;
-            --shade-600: #475569;
-            --shade-700: #334155;
-            --shade-800: #1e293b;
-            --shade-900: #0f172a;
-            
-            /* Color Tint - TYPE 1, TYPE 2 и т.д. */
-            --tint-1: #f0f9ff;    /* TYPE 1 */
-            --tint-2: #fefce8;    /* TYPE 2 */
-            --tint-3: #f7fee7;    /* TYPE 3 */
-            --tint-4: #f0fdf4;    /* TYPE 4 */
-            --tint-5: #faf5ff;    /* TYPE 5 */
-            --tint-6: #fef2f2;    /* TYPE 6 */
-            --tint-7: #fffbeb;    /* TYPE 7 */
-            
-            /* Action Colors - Navigation, OPENWORD и т.д. */
-            --action-primary: #3b82f6;    /* Navigation */
-            --action-secondary: #10b981;  /* OPENWORD */
-            --action-success: #10b981;    /* TEAM SAVINGS */
-            --action-warning: #f59e0b;    /* SIZE PACKAGES */
-            --action-error: #ef4444;      /* ERROR */
-            --action-info: #3b82f6;       /* INFO */
-            
-            /* Typography */
-            --font-heading: 'Inter', sans-serif;
-            --font-body: 'Roboto', sans-serif;
-            
-            /* Spacing according to layout */
-            --spacing-144: 144px;
-            --spacing-24: 24px;
-        }
-
-        /* ===== RESET & BASE STYLES ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font-body);
-            line-height: 1.6;
-            color: var(--neutral-800);
-            background-color: white;
-            overflow-x: hidden;
-        }
-
-        /* ===== LAYOUT CONTAINER WITH SPECIFIC MARGINS ===== */
-        .container {
-            width: 100%;
-            /* 144px слева + 144px справа = 288px */
-            max-width: calc(100vw - 288px);
-            margin: 0 auto;
-            /* Пробел 24px внутри контейнера */
-            padding: 0 var(--spacing-24);
-        }
-
-        /* ===== TYPOGRAPHY SYSTEM ===== */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-heading);
-            font-weight: 600;
-            line-height: 1.2;
-            color: var(--neutral-900);
-            margin-bottom: 1rem;
-        }
-
-        /* Headline sizes from typography section */
-        h1 {
-            font-size: 3.5rem; /* Headline 1 */
-            font-weight: 700;
-        }
-
-        h2 {
-            font-size: 3rem; /* Headline 2 */
-            font-weight: 600;
-        }
-
-        h3 {
-            font-size: 2.5rem; /* Headline 3 */
-        }
-
-        h4 {
-            font-size: 2rem; /* Headline 4 */
-        }
-
-        h5 {
-            font-size: 1.5rem; /* Headline 5 */
-        }
-
-        h6 {
-            font-size: 1.25rem; /* Headline 6 */
-        }
-
-        .body-large {
-            font-size: 1.125rem;
-            line-height: 1.7;
-        }
-
-        .body-regular {
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        .body-small {
-            font-size: 0.875rem;
-            line-height: 1.5;
-        }
-
-        .text-regular { font-weight: 400; }
-        .text-medium { font-weight: 500; }
-        .text-bold { font-weight: 700; }
-
-        /* ===== BUTTONS ===== */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 28px;
-            border-radius: 6px;
-            font-family: var(--font-heading);
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            gap: 8px;
-        }
-
-        .btn-primary {
-            background-color: var(--action-primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-700);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
-        }
-
-        .btn-secondary {
-            background-color: var(--action-secondary);
-            color: white;
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            color: var(--action-primary);
-            border: 2px solid var(--action-primary);
-        }
-
-        /* ===== HEADER & VIDEO BACKGROUND ===== */
-        .header {
-            position: relative;
-            height: 100vh;
-            min-height: 700px;
-            overflow: hidden;
-        }
-
-        .video-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -2;
-        }
-
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(23, 23, 23, 0.8) 0%, rgba(38, 38, 38, 0.9) 100%);
-            z-index: -1;
-        }
-
-        /* ===== NAVIGATION ===== */
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            position: relative;
-            z-index: 100;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-            font-family: var(--font-heading);
-        }
-
-        .logo span {
-            color: var(--primary-400);
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 32px;
-        }
-
-        .nav-item {
-            position: relative;
-        }
-
-        .nav-link {
-            color: var(--neutral-200);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 10px 0;
-            transition: color 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .nav-link:hover {
-            color: white;
-        }
-
-        .nav-link i {
-            font-size: 0.875rem;
-        }
-
-        /* Desktop Dropdown Menu */
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: white;
-            min-width: 220px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            border-radius: 8px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            padding: 8px 0;
-        }
-
-        .dropdown-item {
-            padding: 0;
-        }
-
-        .dropdown-link {
-            color: var(--neutral-700);
-            text-decoration: none;
-            padding: 12px 20px;
-            display: block;
-            transition: all 0.2s ease;
-            border-bottom: 1px solid var(--neutral-100);
-        }
-
-        .dropdown-link:last-child {
-            border-bottom: none;
-        }
-
-        .dropdown-link:hover {
-            background-color: var(--primary-50);
-            color: var(--primary-700);
-            padding-left: 24px;
-        }
-
-        .nav-item:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        /* Mobile Menu Toggle */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 8px;
-            z-index: 1001;
-        }
-
-        /* ===== HERO SECTION ===== */
-        .hero {
-            position: relative;
-            z-index: 10;
-            color: white;
-            height: calc(100vh - 80px);
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-content {
-            max-width: 700px;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            margin-bottom: 24px;
-            color: white;
-            line-height: 1.1;
-        }
-
-        .hero-text {
-            font-size: 1.25rem;
-            margin-bottom: 32px;
-            opacity: 0.9;
-            max-width: 600px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            margin-top: 32px;
-        }
-
-        /* ===== SECTIONS ===== */
-        .section {
-            padding: 96px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 64px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -16px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--primary-500);
-            border-radius: 2px;
-        }
-
-        /* ===== SERVICES SECTION ===== */
-        .services {
-            background-color: var(--neutral-50);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
-            margin-top: 48px;
-        }
-
-        .service-card {
-            background: white;
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            border: 1px solid var(--neutral-200);
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-            border-color: var(--primary-300);
-        }
-
-        .service-icon {
-            font-size: 2.5rem;
-            color: var(--primary-600);
-            margin-bottom: 24px;
-        }
-
-        .service-title {
-            font-size: 1.5rem;
-            margin-bottom: 16px;
-            color: var(--neutral-900);
-        }
-
-        /* ===== SLIDER SECTION ===== */
-        .slider-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .slider {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .slide {
-            min-width: 100%;
-            height: 500px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 48px;
-            color: white;
-            text-align: center;
-            position: relative;
-        }
-
-        .slide::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1;
-        }
-
-        .slide-content {
-            position: relative;
-            z-index: 2;
-            max-width: 700px;
-        }
-
-        .slide-1 {
-            background: url('data:image/jpeg;base64,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') center/cover;
-        }
-
-        .slide-2 {
-            background: url('data:image/jpeg;base64,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') center/cover;
-        }
-
-        .slide-3 {
-            background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
-        }
-
-        .slider-nav {
-            position: absolute;
-            bottom: 24px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            z-index: 3;
-        }
-
-        .slider-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .slider-dot.active {
-            background: white;
-            transform: scale(1.2);
-        }
-
-        .slider-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            color: white;
-            border: none;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 3;
-        }
-
-        .slider-arrow:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .slider-arrow.prev {
-            left: 24px;
-        }
-
-        .slider-arrow.next {
-            right: 24px;
-        }
-
-        /* ===== CONTACT FORM SECTION ===== */
-        .contact-form {
-            background: linear-gradient(135deg, var(--tint-1) 0%, var(--tint-3) 100%);
-        }
-
-        .form-wrapper {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 48px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border: 1px solid var(--neutral-200);
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--neutral-700);
-            font-family: var(--font-heading);
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 14px 16px;
-            border: 2px solid var(--neutral-300);
-            border-radius: 8px;
-            font-family: var(--font-body);
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background: white;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary-500);
-            box-shadow: 0 0 0 3px var(--primary-100);
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .form-message {
-            margin-top: 24px;
-            padding: 16px;
-            border-radius: 8px;
-            display: none;
-            text-align: center;
-            font-weight: 500;
-        }
-
-        .form-message.success {
-            background-color: var(--tint-4);
-            color: var(--action-success);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            display: block;
-        }
-
-        .form-message.error {
-            background-color: var(--tint-6);
-            color: var(--action-error);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            display: block;
-        }
-
-        .btn-loading {
-            position: relative;
-            color: transparent;
-        }
-
-        .btn-loading::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 20px;
-            height: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-top-color: white;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            background: var(--neutral-900);
-            color: var(--neutral-300);
-            padding: 80px 0 32px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 48px;
-            margin-bottom: 48px;
-        }
-
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 20px;
-            display: block;
-            text-decoration: none;
-        }
-
-        .footer-text {
-            margin-bottom: 24px;
-            line-height: 1.7;
-            color: var(--neutral-400);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 12px;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background: var(--neutral-800);
-            color: var(--neutral-300);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            background: var(--primary-600);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .footer-title {
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: white;
-            margin-bottom: 20px;
-            font-family: var(--font-heading);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: var(--neutral-400);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary-400);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 32px;
-            border-top: 1px solid var(--neutral-800);
-            color: var(--neutral-500);
-            font-size: 0.875rem;
-        }
-
-        /* ===== MOBILE STYLES ===== */
-        @media (max-width: 1400px) {
-            .container {
-                max-width: calc(100vw - 200px);
-            }
-        }
-
-        @media (max-width: 1200px) {
-            .container {
-                max-width: calc(100vw - 120px);
-            }
-            
-            h1 {
-                font-size: 3rem;
-            }
-            
-            h2 {
-                font-size: 2.5rem;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .container {
-                max-width: calc(100vw - 80px);
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 40px;
-            }
-            
-            .slide {
-                height: 400px;
-                padding: 32px;
-            }
-            
-            .section {
-                padding: 64px 0;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                max-width: 100%;
-                padding: 0 24px;
-            }
-            
-            /* Mobile Menu */
-            .menu-toggle {
-                display: block;
-            }
-            
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 100%;
-                max-width: 320px;
-                height: 100vh;
-                background: var(--neutral-900);
-                flex-direction: column;
-                padding: 80px 32px 32px;
-                transition: right 0.4s ease;
-                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
-                z-index: 1000;
-                gap: 0;
-            }
-            
-            .nav-menu.active {
-                right: 0;
-            }
-            
-            .nav-item {
-                margin: 0;
-                border-bottom: 1px solid var(--neutral-800);
-            }
-            
-            .nav-link {
-                padding: 16px 0;
-                color: var(--neutral-300);
-                justify-content: space-between;
-            }
-            
-            /* Mobile Dropdown */
-            .dropdown-menu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                background: var(--neutral-800);
-                margin: 0;
-                padding: 0;
-                border-radius: 0;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease;
-            }
-            
-            .dropdown-menu.active {
-                max-height: 300px;
-            }
-            
-            .dropdown-link {
-                color: var(--neutral-400);
-                padding: 12px 0 12px 24px;
-                border-top: 1px solid var(--neutral-700);
-            }
-            
-            .dropdown-link:hover {
-                background-color: var(--neutral-800);
-            }
-            
-            .menu-overlay {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.5);
-                z-index: 999;
-                display: none;
-            }
-            
-            .menu-overlay.active {
-                display: block;
-            }
-            
-            .close-menu {
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                background: none;
-                border: none;
-                font-size: 1.5rem;
-                color: var(--neutral-300);
-                cursor: pointer;
-                z-index: 1001;
-            }
-            
-            /* Adjustments for mobile */
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-text {
-                font-size: 1.125rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-            }
-            
-            .slide {
-                height: 350px;
-                padding: 24px;
-            }
-            
-            .slider-arrow {
-                width: 40px;
-                height: 40px;
-            }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .form-wrapper {
-                padding: 32px 24px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .container {
-                padding: 0 16px;
-            }
-            
-            h1 {
-                font-size: 2.25rem;
-            }
-            
-            h2 {
-                font-size: 2rem;
-            }
-            
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .slide {
-                height: 300px;
-            }
-        }
-    </style>
+    <title>Drupal-coder - Поддержка сайтов на Drupal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Header with Video Background -->
+    <!-- Шапка с видеофоном -->
     <header class="header">
-        <video autoplay muted loop class="video-background">
-            <source src="https://assets.mixkit.co/videos/46750/46750-720.mp4" type="video/mp4">
-            Ваш браузер не поддерживает видео.
-        </video>
-        <div class="video-overlay"></div>
+        <div class="header-video-placeholder"></div>
+        <div class="header-overlay"></div>
         
-        <!-- Mobile Menu Overlay -->
-        <div class="menu-overlay" id="menuOverlay"></div>
-        
-        <div class="container">
-            <!-- Navigation -->
-            <nav class="nav">
-                <a href="#" class="logo">Modern<span>Brand</span></a>
-                
-                <button class="menu-toggle" id="menuToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-                
-                <ul class="nav-menu" id="navMenu">
-                    <button class="close-menu" id="closeMenu">
-                        <i class="fas fa-times"></i>
-                    </button>
+        <!-- Навигация -->
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-content">
+                    <a href="#" class="logo">Drupal-coder</a>
                     
-                    <li class="nav-item">
-                        <a href="#home" class="nav-link">Главная</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#about" class="nav-link">О нас</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#services" class="nav-link">
-                            Услуги
-                            <i class="fas fa-chevron-down"></i>
-                        </a>
-                        <div class="dropdown-menu">
-                            <div class="dropdown-item">
-                                <a href="#service1" class="dropdown-link">Веб-разработка</a>
-                            </div>
-                            <div class="dropdown-item">
-                                <a href="#service2" class="dropdown-link">Мобильные приложения</a>
-                            </div>
-                            <div class="dropdown-item">
-                                <a href="#service3" class="dropdown-link">UI/UX дизайн</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#projects" class="nav-link">Проекты</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#contact" class="nav-link">Контакты</a>
-                    </li>
-                </ul>
-            </nav>
-            
-            <!-- Hero Content -->
-            <div class="hero" id="home">
-                <div class="hero-content">
-                    <h1 class="hero-title">Создаём будущее вместе</h1>
-                    <p class="hero-text body-large">
-                        Мы разрабатываем инновационные решения для вашего бизнеса, используя современные 
-                        технологии и креативный подход. Наша команда экспертов поможет вам достичь новых 
-                        высот в digital-мире.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#contact" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i> Связаться с нами
-                        </a>
-                        <a href="#projects" class="btn btn-outline">
-                            <i class="fas fa-eye"></i> Наши проекты
-                        </a>
-                    </div>
+                    <!-- Десктопное меню -->
+                    <ul class="nav-menu">
+                        <li><a href="#support">Поддержка</a></li>
+                        <li class="menu-item-has-children">
+                            <a href="#admin">Администрирование <span class="arrow">▼</span></a>
+                            <ul class="submenu">
+                                <li><a href="#migration">Миграция</a></li>
+                                <li><a href="#backups">Бэкапы</a></li>
+                                <li><a href="#audit">Аудит безопасности</a></li>
+                                <li><a href="#optimization">Оптимизация скорости</a></li>
+                                <li><a href="#https">Переезд на HTTPS</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#promotion">Продвижение</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                    
+                    <!-- Кнопка мобильного меню -->
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </div>
+            </div>
+        </nav>
+
+        <!-- Мобильное меню -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-content">
+                <ul class="mobile-nav">
+                    <li><a href="#support">Поддержка</a></li>
+                    <li class="mobile-menu-item-has-children">
+                        <a href="#admin">Администрирование <span class="mobile-arrow">▼</span></a>
+                        <ul class="mobile-submenu">
+                            <li><a href="#migration">Миграция</a></li>
+                            <li><a href="#backups">Бэкапы</a></li>
+                            <li><a href="#audit">Аудит безопасности</a></li>
+                            <li><a href="#optimization">Оптимизация скорости</a></li>
+                            <li><a href="#https">Переезд на HTTPS</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#promotion">Продвижение</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Заголовок в шапке -->
+        <div class="container">
+            <div class="header-content">
+                <h1 class="header-title">
+                    Поддержка сайтов<br>на Drupal
+                </h1>
+                <p class="header-subtitle">
+                    13 лет совершенствуем компетенции в Drupal поддержке!
+                </p>
+                <p class="header-text">
+                    Разрабатываем и оптимизируем модули, расширяем функциональность сайтов, обновляем дизайн
+                </p>
+                <button class="btn btn-primary" id="scrollToForm">Обсудить задачу</button>
             </div>
         </div>
     </header>
-    
-    <!-- Services Section -->
-    <section class="section services" id="services">
-        <div class="container">
-            <h2 class="section-title">Наши услуги</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
+
+    <!-- Основное содержимое -->
+    <main>
+        <!-- Секция услуг -->
+        <section class="services" id="support">
+            <div class="container">
+                <h2 class="section-title">Поддержка сайтов от Drupal-coder</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">📝</div>
+                        <h3>Добавление информации на сайт, создание новых разделов</h3>
                     </div>
-                    <h3 class="service-title">Веб-разработка</h3>
-                    <p class="body-regular">
-                        Создание современных веб-приложений и сайтов с использованием передовых технологий 
-                        и фреймворков. Адаптивный дизайн, высокая производительность и безопасность.
-                    </p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-mobile-alt"></i>
+                    <div class="service-card">
+                        <div class="service-icon">⚙️</div>
+                        <h3>Разработка и оптимизация модулей сайта</h3>
                     </div>
-                    <h3 class="service-title">Мобильные приложения</h3>
-                    <p class="body-regular">
-                        Разработка нативных и кроссплатформенных мобильных приложений для iOS и Android. 
-                        Фокус на пользовательском опыте и производительности.
-                    </p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-palette"></i>
+                    <div class="service-card">
+                        <div class="service-icon">🔗</div>
+                        <h3>Интеграция с CRM, 1С, платежными системами</h3>
                     </div>
-                    <h3 class="service-title">UI/UX дизайн</h3>
-                    <p class="body-regular">
-                        Проектирование интерфейсов, которые сочетают в себе эстетику, удобство и 
-                        функциональность. Исследование пользователей и тестирование прототипов.
-                    </p>
+                    <div class="service-card">
+                        <div class="service-icon">🎨</div>
+                        <h3>Любые доработки функционала и дизайна</h3>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🛡️</div>
+                        <h3>Аудит и мониторинг безопасности Drupal сайтов</h3>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🚀</div>
+                        <h3>Миграция, импорт контента и апгрейд Drupal</h3>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">⚡</div>
+                        <h3>Оптимизация и ускорение Drupal-сайтов</h3>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📈</div>
+                        <h3>Веб-маркетинг, консультации и работы по SEO</h3>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- Slider Section -->
-    <section class="section" id="projects">
-        <div class="container">
-            <h2 class="section-title">Наши проекты</h2>
-            <div class="slider-container">
-                <div class="slider" id="slider">
-                    <div class="slide slide-1">
-                        <div class="slide-content">
-                            <h3 class="h2">Корпоративная платформа</h3>
-                            <p class="body-large">
-                                Разработали комплексную ERP-систему для крупной производственной компании, 
-                                которая позволила автоматизировать ключевые бизнес-процессы и увеличить 
-                                эффективность на 40%.
-                            </p>
-                            <a href="#" class="btn btn-primary" style="margin-top: 32px;">
-                                Подробнее о проекте
-                            </a>
-                        </div>
+        </section>
+
+        <!-- Секция поддержки -->
+        <section class="support-features">
+            <div class="container">
+                <h2 class="section-title">Поддержка от Drupal-coder</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-number">01</div>
+                        <h3>Постановка задачи по Email</h3>
+                        <p>Удобная и привычная модель постановки задач, при которой задача фиксируется и никогда не теряется.</p>
                     </div>
-                    
-                    <div class="slide slide-2">
-                        <div class="slide-content">
-                            <h3 class="h2">Мобильное приложение для доставки</h3>
-                            <p class="body-large">
-                                Создали кроссплатформенное приложение для сервиса доставки еды с функцией 
-                                отслеживания заказа в реальном времени и интегрированной системой оплаты.
-                            </p>
-                            <a href="#" class="btn btn-primary" style="margin-top: 32px;">
-                                Подробнее о проекте
-                            </a>
-                        </div>
+                    <div class="feature-card">
+                        <div class="feature-number">02</div>
+                        <h3>Система Helpdesk - отчетность, прозрачность</h3>
+                        <p>Возможность посмотреть все заявки в работе и отработанные часы в личном кабинете через браузер.</p>
                     </div>
-                    
-                    <div class="slide slide-3">
-                        <div class="slide-content">
-                            <h3 class="h2">Облачная CRM система</h3>
-                            <p class="body-large">
-                                Реализовали облачную CRM-систему с AI-аналитикой для автоматизации продаж 
-                                и улучшения взаимодействия с клиентами.
-                            </p>
-                            <a href="#" class="btn btn-primary" style="margin-top: 32px;">
-                                Подробнее о проекте
-                            </a>
-                        </div>
+                    <div class="feature-card">
+                        <div class="feature-number">03</div>
+                        <h3>Расширенная техническая поддержка</h3>
+                        <p>Возможность организации расширенной техподдержки с 6:00 до 22:00 без выходных.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-number">04</div>
+                        <h3>Персональный менеджер проекта</h3>
+                        <p>Ваш менеджер проекта всегда в курсе текущего состояния проекта и в любой момент готов ответить на любые вопросы.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-number">05</div>
+                        <h3>Удобные способы оплаты</h3>
+                        <p>Безналичный расчет по договору или электронные деньги: WebMoney, Яндекс.Деньги, Paypal.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-number">06</div>
+                        <h3>Работаем с SLA и NDA</h3>
+                        <p>Работа в рамках соглашений о конфиденциальности и об уровне качества работ.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-number">07</div>
+                        <h3>Штатные специалисты</h3>
+                        <p>Надежные штатные специалисты, никаких фрилансеров.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-number">08</div>
+                        <h3>Удобные каналы связи</h3>
+                        <p>Консультации по телефону, скайпу, в мессенджерах.</p>
                     </div>
                 </div>
                 
-                <button class="slider-arrow prev" id="prevSlide">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="slider-arrow next" id="nextSlide">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                
-                <div class="slider-nav">
-                    <button class="slider-dot active" data-index="0"></button>
-                    <button class="slider-dot" data-index="1"></button>
-                    <button class="slider-dot" data-index="2"></button>
+                <div class="expertise">
+                    <h3>Экспертиза в Master, опыт 14 лет!</h3>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- Contact Form Section -->
-    <section class="section contact-form" id="contact">
-        <div class="container">
-            <h2 class="section-title">Свяжитесь с нами</h2>
-            <div class="form-wrapper">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name" class="form-label">Ваше имя *</label>
-                        <input type="text" id="name" class="form-control" required>
+        </section>
+
+        <!-- Секция тарифов -->
+        <section class="pricing" id="tariffs">
+            <div class="container">
+                <h2 class="section-title">Тарифы</h2>
+                <div class="pricing-grid">
+                    <div class="price-card">
+                        <h3 class="price-card-title">Стартовый</h3>
+                        <div class="price-card-price">от 6 000 руб.</div>
+                        <ul class="price-card-features">
+                            <li>Консультации и работы по SEO</li>
+                            <li>Услуги дизайнера</li>
+                            <li>Неиспользованные часы переносятся</li>
+                        </ul>
+                        <button class="btn btn-secondary">Выбрать тариф</button>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email адрес *</label>
-                        <input type="email" id="email" class="form-control" required>
+                    <div class="price-card featured">
+                        <h3 class="price-card-title">Бизнес</h3>
+                        <div class="price-card-price">от 30 000 руб.</div>
+                        <ul class="price-card-features">
+                            <li>Консультации и работы по SEO</li>
+                            <li>Услуги дизайнера</li>
+                            <li>Высокое время реакции</li>
+                        </ul>
+                        <button class="btn btn-primary">Выбрать тариф</button>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="phone" class="form-label">Телефон</label>
-                        <input type="tel" id="phone" class="form-control">
+                    <div class="price-card">
+                        <h3 class="price-card-title">VIP</h3>
+                        <div class="price-card-price">от 270 000 руб.</div>
+                        <ul class="price-card-features">
+                            <li>Консультации и работы по SEO</li>
+                            <li>Услуги дизайнера</li>
+                            <li>Максимальное время реакции</li>
+                        </ul>
+                        <button class="btn btn-secondary">Выбрать тариф</button>
                     </div>
-                    
+                </div>
+                <div class="pricing-note">
+                    <p>Вам не подходят наши тарифы? Оставьте заявку и мы предложим вам индивидуальный тариф!</p>
+                    <button class="btn btn-primary" id="individualTariff">Получить индивидуальный тариф</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция формы -->
+        <section class="contact-form" id="contact">
+            <div class="container">
+                <h2 class="section-title">Оставить заявку на поддержку сайта</h2>
+                <form id="supportForm" class="form">
                     <div class="form-group">
-                        <label for="service" class="form-label">Интересующая услуга</label>
-                        <select id="service" class="form-control">
-                            <option value="">Выберите услугу</option>
-                            <option value="web">Веб-разработка</option>
-                            <option value="mobile">Мобильные приложения</option>
-                            <option value="design">UI/UX дизайн</option>
-                            <option value="consulting">IT-консалтинг</option>
-                        </select>
+                        <input type="text" id="name" name="name" placeholder="Ваше имя" required>
                     </div>
-                    
                     <div class="form-group">
-                        <label for="message" class="form-label">Сообщение *</label>
-                        <textarea id="message" class="form-control" required></textarea>
+                        <input type="tel" id="phone" name="phone" placeholder="Телефон" required>
                     </div>
-                    
-                    <div class="form-message" id="formMessage"></div>
-                    
-                    <button type="submit" class="btn btn-primary" id="submitBtn" style="width: 100%; padding: 16px;">
-                        <i class="fas fa-paper-plane"></i> Отправить сообщение
-                    </button>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Ваш комментарий" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreement" name="agreement" required>
+                            <span>Соглашаюсь с обработкой персональных данных</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Отправить заявку</button>
                 </form>
             </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
+        </section>
+
+        <!-- Секция FAQ -->
+        <section class="faq" id="faq">
+            <div class="container">
+                <h2 class="section-title">Часто задаваемые вопросы</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3 class="faq-question">Кто непосредственно занимается поддержкой?</h3>
+                        <p class="faq-answer">Сайты поддерживают штатные сотрудники ООО "Иннитлаб" г. Краснодар, прошедшие специальное обучение и имеющие опыт работы с Master от 4 до 15 лет.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-question">Как организована работа поддержки?</h3>
+                        <p class="faq-answer">Работа организована через систему Helpdesk, где вы можете отслеживать статус всех заявок и отработанное время.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-question">Что происходит когда отработаны все предоплаченные часы за месяц?</h3>
+                        <p class="faq-answer">Когда отработаны все предоплаченные часы, вы можете либо докупить дополнительные часы, либо перенести невыполненные задачи на следующий месяц.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-question">Можно ли пообщаться со специалистом голосом или в мессенджере?</h3>
+                        <p class="faq-answer">Да, вы можете общаться со специалистом по телефону, Skype или в любых удобных для вас мессенджерах.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-about">
-                    <a href="#" class="footer-logo">ModernBrand</a>
-                    <p class="footer-text">
-                        Мы создаем инновационные digital-решения, которые помогают бизнесу достигать 
-                        новых высот в цифровую эпоху.
-                    </p>
-                    <div class="social-links">
-                        <a href="#" class="social-link">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
+                <div class="footer-info">
+                    <h3>Master-coder</h3>
+                    <p>Проект ООО «Иннитлаб», Краснодар, Россия.<br>
+                    Мастер является зарегистрированной торговой маркой Dries Buytaert.</p>
                 </div>
-                
-                <div class="footer-links-section">
-                    <h4 class="footer-title">Навигация</h4>
-                    <ul class="footer-links">
-                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Главная</a></li>
-                        <li><a href="#about"><i class="fas fa-chevron-right"></i> О компании</a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Услуги</a></li>
-                        <li><a href="#projects"><i class="fas fa-chevron-right"></i> Проекты</a></li>
-                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Контакты</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links-section">
-                    <h4 class="footer-title">Услуги</h4>
-                    <ul class="footer-links">
-                        <li><a href="#web"><i class="fas fa-chevron-right"></i> Веб-разработка</a></li>
-                        <li><a href="#mobile"><i class="fas fa-chevron-right"></i> Мобильные приложения</a></li>
-                        <li><a href="#design"><i class="fas fa-chevron-right"></i> UI/UX дизайн</a></li>
-                        <li><a href="#consulting"><i class="fas fa-chevron-right"></i> IT-консалтинг</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-contact">
-                    <h4 class="footer-title">Контакты</h4>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Москва, ул. Примерная, д. 10</a></li>
-                        <li><a href="tel:+79991234567"><i class="fas fa-phone"></i> +7 (999) 123-45-67</a></li>
-                        <li><a href="mailto:info@modernbrand.ru"><i class="fas fa-envelope"></i> info@modernbrand.ru</a></li>
-                        <li><a href="#"><i class="fas fa-clock"></i> Пн-Пт: 9:00-18:00</a></li>
-                    </ul>
+                <div class="footer-contacts">
+                    <h4>Контакты</h4>
+                    <p>Телефон: <a href="tel:88002222673">8 800 222-26-73</a></p>
+                    <p>Email: <a href="mailto:info@master-coder.ru">info@master-coder.ru</a></p>
                 </div>
             </div>
-            
-            <div class="copyright">
-                <p>&copy; 2023 ModernBrand. Все права защищены.</p>
+            <div class="footer-copyright">
+                <p>© 2026 Master-coder. Все права защищены.</p>
             </div>
         </div>
     </footer>
-    
-    <script>
-        // ===== MOBILE MENU FUNCTIONALITY =====
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        const closeMenu = document.getElementById('closeMenu');
-        const menuOverlay = document.getElementById('menuOverlay');
-        
-        // Open mobile menu
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.add('active');
-            menuOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-        
-        // Close mobile menu
-        closeMenu.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-        
-        // Close menu when clicking on overlay
-        menuOverlay.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-        
-        // ===== MOBILE DROPDOWN FUNCTIONALITY =====
-        const dropdownItems = document.querySelectorAll('.nav-item');
-        
-        dropdownItems.forEach(item => {
-            if (item.querySelector('.dropdown-menu')) {
-                const link = item.querySelector('.nav-link');
-                const dropdown = item.querySelector('.dropdown-menu');
-                const chevron = link.querySelector('i');
-                
-                link.addEventListener('click', (e) => {
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        
-                        // Close other dropdowns
-                        dropdownItems.forEach(otherItem => {
-                            if (otherItem !== item && otherItem.querySelector('.dropdown-menu')) {
-                                otherItem.querySelector('.dropdown-menu').classList.remove('active');
-                                const otherChevron = otherItem.querySelector('.nav-link i');
-                                if (otherChevron) {
-                                    otherChevron.style.transform = 'rotate(0deg)';
-                                }
-                            }
-                        });
-                        
-                        // Toggle current dropdown
-                        dropdown.classList.toggle('active');
-                        
-                        // Rotate chevron icon
-                        if (chevron) {
-                            if (dropdown.classList.contains('active')) {
-                                chevron.style.transform = 'rotate(180deg)';
-                            } else {
-                                chevron.style.transform = 'rotate(0deg)';
-                            }
-                        }
-                    }
-                });
-            }
-        });
-        
-        // Close dropdown when clicking outside on mobile
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
-                dropdownItems.forEach(item => {
-                    const dropdown = item.querySelector('.dropdown-menu');
-                    if (dropdown && !item.contains(e.target) && dropdown.classList.contains('active')) {
-                        dropdown.classList.remove('active');
-                        
-                        // Reset chevron icon
-                        const chevron = item.querySelector('.nav-link i');
-                        if (chevron) {
-                            chevron.style.transform = 'rotate(0deg)';
-                        }
-                    }
-                });
-            }
-        });
-        
-        // ===== SLIDER FUNCTIONALITY =====
-        const slider = document.getElementById('slider');
-        const prevBtn = document.getElementById('prevSlide');
-        const nextBtn = document.getElementById('nextSlide');
-        const dots = document.querySelectorAll('.slider-dot');
-        let currentSlide = 0;
-        const totalSlides = 3;
-        let slideInterval;
-        
-        // Function to update slider position
-        function updateSlider() {
-            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-            
-            // Update dots
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
-        }
-        
-        // Next slide
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateSlider();
-        }
-        
-        // Previous slide
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateSlider();
-        }
-        
-        // Event listeners for slider controls
-        prevBtn.addEventListener('click', prevSlide);
-        nextBtn.addEventListener('click', nextSlide);
-        
-        // Dot navigation
-        dots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                currentSlide = parseInt(dot.getAttribute('data-index'));
-                updateSlider();
-                resetAutoSlide();
-            });
-        });
-        
-        // Auto slide
-        function startAutoSlide() {
-            slideInterval = setInterval(nextSlide, 5000);
-        }
-        
-        function resetAutoSlide() {
-            clearInterval(slideInterval);
-            startAutoSlide();
-        }
-        
-        // Start auto sliding
-        startAutoSlide();
-        
-        // Pause auto slide on hover
-        const sliderContainer = document.querySelector('.slider-container');
-        sliderContainer.addEventListener('mouseenter', () => {
-            clearInterval(slideInterval);
-        });
-        
-        sliderContainer.addEventListener('mouseleave', () => {
-            startAutoSlide();
-        });
-        
-        // ===== FORM SUBMISSION =====
-        const contactForm = document.getElementById('contactForm');
-        const formMessage = document.getElementById('formMessage');
-        const submitBtn = document.getElementById('submitBtn');
-        
-        // Form validation
-        function validateForm(formData) {
-            const errors = [];
-            
-            if (!formData.name.trim()) {
-                errors.push('Имя обязательно для заполнения');
-            }
-            
-            if (!formData.email.trim()) {
-                errors.push('Email обязателен для заполнения');
-            } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
-                errors.push('Введите корректный email адрес');
-            }
-            
-            if (!formData.message.trim()) {
-                errors.push('Сообщение обязательно для заполнения');
-            }
-            
-            return errors;
-        }
-        
-        // Form submission handler
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                service: document.getElementById('service').value,
-                message: document.getElementById('message').value
-            };
-            
-            // Validate form
-            const errors = validateForm(formData);
-            
-            if (errors.length > 0) {
-                formMessage.textContent = errors.join('. ');
-                formMessage.className = 'form-message error';
-                return;
-            }
-            
-            // Disable submit button and show loading state
-            submitBtn.disabled = true;
-            submitBtn.classList.add('btn-loading');
-            
-            try {
-                // Simulate API call with a timeout
-                await new Promise(resolve => setTimeout(resolve, 1500));
-                
-                // Save form data to localStorage (for demonstration)
-                const savedForms = JSON.parse(localStorage.getItem('contactForms') || '[]');
-                savedForms.push({
-                    ...formData,
-                    timestamp: new Date().toISOString()
-                });
-                localStorage.setItem('contactForms', JSON.stringify(savedForms));
-                
-                // Show success message
-                formMessage.textContent = 'Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.';
-                formMessage.className = 'form-message success';
-                
-                // Reset form
-                contactForm.reset();
-                
-            } catch (error) {
-                // Show error message
-                formMessage.textContent = 'Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз.';
-                formMessage.className = 'form-message error';
-                console.error('Form submission error:', error);
-                
-            } finally {
-                // Re-enable submit button
-                submitBtn.disabled = false;
-                submitBtn.classList.remove('btn-loading');
-                
-                // Hide message after 5 seconds
-                setTimeout(() => {
-                    formMessage.style.display = 'none';
-                }, 5000);
-            }
-        });
-        
-        // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    e.preventDefault();
-                    
-                    // Close mobile menu if open
-                    if (window.innerWidth <= 768 && navMenu.classList.contains('active')) {
-                        navMenu.classList.remove('active');
-                        menuOverlay.classList.remove('active');
-                        document.body.style.overflow = '';
-                    }
-                    
-                    // Smooth scroll to target
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // ===== VIDEO FALLBACK =====
-        const headerVideo = document.querySelector('.video-background');
-        
-        // Try to play video on user interaction
-        document.addEventListener('click', function initVideo() {
-            if (headerVideo.paused) {
-                headerVideo.play().catch(e => {
-                    console.log('Video autoplay failed:', e);
-                });
-            }
-            document.removeEventListener('click', initVideo);
-        });
-        
-        // ===== RESPONSIVE ADJUSTMENTS =====
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                // Reset mobile menu state
-                navMenu.classList.remove('active');
-                menuOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-                
-                // Reset dropdown menus
-                dropdownItems.forEach(item => {
-                    const dropdown = item.querySelector('.dropdown-menu');
-                    if (dropdown) {
-                        dropdown.classList.remove('active');
-                        dropdown.style.maxHeight = '';
-                        
-                        // Reset chevron icon
-                        const chevron = item.querySelector('.nav-link i');
-                        if (chevron) {
-                            chevron.style.transform = '';
-                        }
-                    }
-                });
-            }
-        });
-        
-        // ===== INITIALIZE PAGE =====
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialize form message
-            formMessage.style.display = 'none';
-        });
-    </script>
+
+    <script src="js/main.js"></script>
+    <script src="js/form.js"></script>
 </body>
 </html>
